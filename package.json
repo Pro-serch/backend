@@ -1,7 +1,6 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,5 +17,15 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.8",
     "nodemon": "^2.0.15"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pro-serch/backend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Pro-serch/backend/issues"
+  },
+  "homepage": "https://github.com/Pro-serch/backend#readme",
+  "description": ""
 }

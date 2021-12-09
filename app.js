@@ -28,9 +28,7 @@ const PORT=process.env.PORT;
 // app.get('/about',middleware,(req,res)=>{
 //     res.send(`hellow about from the server`);
 // });
-app.get('/signin',(req,res)=>{
-    res.send(`hellow signin from the server`);
-});
+
 // app.get('/signup',(req,res)=>{
 //     res.send(`hellow signup from the server`);
 // });

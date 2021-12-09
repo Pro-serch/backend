@@ -1,5 +1,8 @@
  const jwt=require("jsonwebtoken");
  const myColllection= require("../modul/userSchema");
+
+ 
+ 
  const Authenticate =async(req,res,next)=>{
 try{
 const token=req.cookies.jwtoken;

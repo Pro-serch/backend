@@ -67,7 +67,7 @@ router.get('/',(req,res)=>{
 //             }).catch(err =>{console.log(err)});
 
 
-router.post('/register',async(req,res)=>{
+router.post('/api/register',async(req,res)=>{
     
     const{name,email,phone,work,password,cpassword}=req.body;
     // console.log(name);
@@ -136,11 +136,49 @@ if(userLogin){
 // about us ka page:
 
 
-
 router.get('/about',authenticate,(req,res)=>{
     console.log(`hellow about from the server`)
     res.send(req.rootUser); 
 });
+
+//get user data for contactus ka page and home page
+
+router.get('/getdata',authenticate,(req,res)=>{
+    console.log(`hellow contact&home from the server`)
+    res.send(req.rootUser); 
+});
+
+
+router.post('/contact',authenticate,async (req,res)=>{
+        try{
+            
+            const{name,email,phone,message}=req.body;
+            if(!name || !email || !phone|| !message){
+console.log("error in contact form");
+return res.json({error:"plzz filled the contact form"})
+            }
+         const userContact=await myColllection.findOne({_id:req.userId});
+
+if(userContact){
+    const userMessage=await userContact.addMessage(name,email,phone,message)
+await userMessage.save()
+res.status(201).json({message:"user contact successfully"})
+
+}
+
+        }catch{
+            console.log(error)
+        }
+    });
+
+    router.get('/logout',(req,res)=>{
+
+        res.clearCookie('jwtoken',{path:'/'})
+        console.log(`hellow logout from the server`);
+        res.status(200).send('User logout'); 
+    });
+
+
 
 
 module.exports=router;
